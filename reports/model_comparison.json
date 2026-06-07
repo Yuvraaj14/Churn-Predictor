@@ -1,0 +1,32 @@
+{
+  "Logistic Regression": {
+    "metrics": {
+      "accuracy": 0.7374,
+      "roc_auc": 0.845,
+      "f1": 0.6178,
+      "precision": 0.5034,
+      "recall": 0.7995
+    },
+    "run_id": "afba1912cab94f72b4a8c55c932f1b98"
+  },
+  "XGBoost": {
+    "metrics": {
+      "accuracy": 0.7438,
+      "roc_auc": 0.8416,
+      "f1": 0.6297,
+      "precision": 0.5108,
+      "recall": 0.8209
+    },
+    "run_id": "9c7c33b5086140c3b277d8bd9f477e91"
+  },
+  "LightGBM": {
+    "metrics": {
+      "accuracy": 0.7857,
+      "roc_auc": 0.8429,
+      "f1": 0.6005,
+      "precision": 0.5942,
+      "recall": 0.607
+    },
+    "run_id": "dec702e36a4549998b8258f0ca451817"
+  }
+}

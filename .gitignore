@@ -1,0 +1,41 @@
+@"
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+
+# Data (tracked by DVC)
+data/raw/
+data/processed/
+data/reference/
+
+# Models (tracked by MLflow)
+models/
+
+# Environment
+.env
+
+# MLflow
+mlruns/
+
+# DVC
+.dvc/cache/
+.dvc/tmp/
+
+# Reports (generated)
+reports/*.html
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Logs
+*.log
+logs/
+"@ | Set-Content .gitignore -Encoding UTF8NoBOM
