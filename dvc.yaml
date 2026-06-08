@@ -1,0 +1,70 @@
+stages:
+  ingest:
+    cmd: python -m src.data.ingest
+    deps:
+      - src/data/ingest.py
+      - data/raw/telco_churn.csv
+    outs:
+      - data/raw/telco_churn.csv:
+          cache: false
+
+  preprocess:
+    cmd: python -m src.data.preprocess
+    deps:
+      - src/data/preprocess.py
+      - data/raw/telco_churn.csv
+    outs:
+      - data/processed/X_train.npy
+      - data/processed/X_test.npy
+      - data/processed/y_train.npy
+      - data/processed/y_test.npy
+      - data/processed/preprocessor.pkl
+      - data/processed/X_train_raw.csv
+      - data/processed/X_test_raw.csv
+      - data/processed/y_train_raw.csv
+      - data/processed/y_test_raw.csv
+    params:
+      - params.yaml:
+          - preprocess.test_size
+          - preprocess.apply_smote
+
+  train:
+    cmd: python -m src.models.train
+    deps:
+      - src/models/train.py
+      - data/processed/X_train.npy
+      - data/processed/y_train.npy
+    outs:
+      - models/xgboost.pkl
+      - models/lightgbm.pkl
+      - models/logistic_regression.pkl
+      - models/best_model_info.json
+    params:
+      - params.yaml:
+          - train.xgb_n_estimators
+          - train.xgb_max_depth
+          - train.xgb_learning_rate
+
+  evaluate:
+    cmd: python -m src.models.evaluate
+    deps:
+      - src/models/evaluate.py
+      - models/xgboost.pkl
+      - data/processed/X_test.npy
+      - data/processed/y_test.npy
+    outs:
+      - reports/shap_bar_xgboost.png
+      - reports/shap_beeswarm_xgboost.png
+      - reports/top_features_xgboost.csv
+
+  monitor:
+    cmd: python -m src.monitoring.drift
+    deps:
+      - src/monitoring/drift.py
+      - data/processed/X_train_raw.csv
+      - data/processed/X_test_raw.csv
+      - models/xgboost.pkl
+    outs:
+      - reports/data_drift_report.html
+      - reports/model_performance_report.html
+      - reports/monitoring_summary.json

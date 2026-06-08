@@ -1,0 +1,22 @@
+@"
+preprocess:
+  test_size: 0.2
+  apply_smote: true
+
+train:
+  xgb_n_estimators: 500
+  xgb_max_depth: 4
+  xgb_learning_rate: 0.03
+  xgb_subsample: 0.8
+  xgb_colsample: 0.7
+  lgb_n_estimators: 500
+  lgb_max_depth: 4
+  lgb_learning_rate: 0.03
+
+evaluate:
+  shap_sample_size: 500
+
+monitor:
+  drift_threshold: 0.1
+  performance_threshold: 0.80
+"@ | Set-Content params.yaml -Encoding UTF8NoBOM
