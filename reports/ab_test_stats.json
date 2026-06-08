@@ -1,12 +1,12 @@
 {
   "champion": {
-    "requests": 5,
+    "requests": 6,
     "correct": 0,
-    "total_prob": 4.4116
+    "total_prob": 5.3064
   },
   "challenger": {
-    "requests": 1,
+    "requests": 2,
     "correct": 0,
-    "total_prob": 0.6313
+    "total_prob": 1.2626
   }
 }
