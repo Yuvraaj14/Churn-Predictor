@@ -1,0 +1,28 @@
+{
+  "champion": "XGBoost",
+  "challenger": "LightGBM",
+  "baseline": "Logistic Regression",
+  "champion_metrics": {
+    "accuracy": 0.7438,
+    "roc_auc": 0.8416,
+    "f1": 0.6297,
+    "precision": 0.5108,
+    "recall": 0.8209
+  },
+  "challenger_metrics": {
+    "accuracy": 0.7857,
+    "roc_auc": 0.8429,
+    "f1": 0.6005,
+    "precision": 0.5942,
+    "recall": 0.607
+  },
+  "baseline_metrics": {
+    "accuracy": 0.7374,
+    "roc_auc": 0.845,
+    "f1": 0.6178,
+    "precision": 0.5034,
+    "recall": 0.7995
+  },
+  "run_id": "9c7c33b5086140c3b277d8bd9f477e91",
+  "decision": "XGBoost selected for production: highest recall (82.1%) catches most churners. In churn prediction, missing a churner costs more than a false alarm."
+}

@@ -6,14 +6,6 @@ __pycache__/
 *.pyo
 *.egg-info/
 
-# Data (tracked by DVC)
-data/raw/*.csv
-data/processed/*.npy
-data/processed/*.pkl
-data/reference/
-
-# Models (tracked by MLflow)
-models/
 
 # Environment
 .env
@@ -25,8 +17,6 @@ mlruns/
 .dvc/cache/
 .dvc/tmp/
 
-# Reports (generated)
-reports/*.html
 
 # OS
 .DS_Store
@@ -40,3 +30,11 @@ Thumbs.db
 *.log
 logs/
 "@ | Set-Content .gitignore -Encoding UTF8NoBOM
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# VS Code
+.vscode/
