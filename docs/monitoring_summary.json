@@ -1,0 +1,40 @@
+{
+  "generated_at": "2026-06-07T18:54:06.594074",
+  "model": "XGBoost v2.0",
+  "dataset": "Telco Customer Churn",
+  "metrics": {
+    "train_samples": 8278,
+    "test_samples": 1409,
+    "churn_rate_train": "50.0% (after SMOTE)",
+    "churn_rate_test": "26.5%"
+  },
+  "model_performance": {
+    "accuracy": 0.7438,
+    "roc_auc": 0.8416,
+    "f1": 0.6297,
+    "precision": 0.5108,
+    "recall": 0.8209
+  },
+  "top_churn_features": [
+    "Contract_Month-to-month",
+    "contract_risk",
+    "avg_monthly_vs_total",
+    "OnlineSecurity_No",
+    "InternetService_Fiber optic",
+    "TechSupport_No",
+    "PaymentMethod_Electronic check",
+    "tenure",
+    "MonthlyCharges",
+    "Dependents_No"
+  ],
+  "ab_test": {
+    "champion": "XGBoost (80% traffic)",
+    "challenger": "LightGBM (20% traffic)",
+    "baseline": "Logistic Regression (reference)"
+  },
+  "cache": {
+    "backend": "Redis",
+    "ttl_seconds": 3600,
+    "target_hit_rate": "40%"
+  }
+}
