@@ -1,8 +1,8 @@
 {
   "champion": {
-    "requests": 6,
+    "requests": 8,
     "correct": 0,
-    "total_prob": 5.3064
+    "total_prob": 7.0752
   },
   "challenger": {
     "requests": 2,
