@@ -149,14 +149,19 @@ In churn prediction, **recall matters most** — missing a churner means losing 
 
 ## ⚡ A/B Testing Strategy
 
-Champion (XGBoost) ── 80% of traffic
+```
+Champion (XGBoost)  ── 80% of traffic
 Challenger (LightGBM) ── 20% of traffic
-Routing: Consistent hashing by customer_id
-→ same customer always gets same model
-Auto Rollback: Triggered if challenger avg probability
-diverges >5% from champion
+
+Routing:          Consistent hashing by customer_id
+                  → same customer always gets same model
+
+Auto Rollback:    Triggered if challenger avg probability
+                  diverges >5% from champion
+
 Cache Invalidation: On model version bump via MLflow
-→ prevents stale predictions
+                  → prevents stale predictions
+```
 
 ---
 
@@ -218,7 +223,7 @@ pytest tests/ -v
 ```env
 # MLflow / DagsHub
 MLFLOW_TRACKING_URI=https://dagshub.com/Yuvraaj14/churn-predictor.mlflow
-DAGSHUB_USER_NAME=Yuvraaj14
+DAGSHUB_USER_NAME=yuvraaj14
 DAGSHUB_TOKEN=your_token
 
 # Redis
@@ -347,7 +352,7 @@ readinessProbe: /health every 10s
 
 - Free Render tier sleeps after 15 mins inactivity (50s cold start)
 - Redis not available on free Render tier (graceful fallback active)
-- FER2013-style label noise exists in Telco dataset (~5% ambiguous cases)
+- Telco dataset has ~5% ambiguous churn labels (crowd-sourced billing data)
 - Model retrained on full dataset — production retraining via Airflow DAG planned
 
 ---
