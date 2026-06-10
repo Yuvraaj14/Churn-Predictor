@@ -259,44 +259,77 @@ pytest tests/test_api.py -v     # 9 API endpoint tests
 
 ## 📁 Project Structure
 
-Churn-Predictor/
-├── src/
-│   ├── data/
-│   │   ├── ingest.py           # Data loading + validation
-│   │   ├── preprocess.py       # Feature engineering + SMOTE
-│   │   └── validate.py         # Data quality checks
-│   ├── models/
-│   │   ├── train.py            # Train LR + XGBoost + LightGBM
-│   │   └── evaluate.py         # SHAP explainability
-│   ├── monitoring/
-│   │   ├── drift.py            # Evidently AI drift detection
-│   │   └── reports.py          # GitHub Pages dashboard
-│   └── api/
-│       ├── main.py             # FastAPI app (7 endpoints)
-│       ├── schemas.py          # Pydantic request/response models
-│       ├── cache.py            # Redis caching layer
-│       └── ab_test.py          # A/B testing + auto rollback
-├── tests/
-│   ├── test_data.py            # 8 data validation tests
-│   ├── test_model.py           # 7 model performance tests
-│   └── test_api.py             # 9 API endpoint tests
-├── k8s/
-│   ├── deployment.yaml         # K8s deployment (2 replicas)
-│   ├── service.yaml            # LoadBalancer + ClusterIP
-│   └── redis-deployment.yaml  # Redis pod
-├── reports/                    # Evidently HTML + dashboard
-├── models/                     # Trained model files
+churn-predictor/
+│
+├── .dvc/
+│
+├── .github/
+│   └── workflows/
+│       └── ci-cd.yml
+│
 ├── data/
-│   ├── raw/                    # Original CSV (DVC tracked)
-│   └── processed/              # Engineered features (DVC tracked)
-├── .github/workflows/
-│   └── ci-cd.yml               # Test + Docker build + Pages deploy
-├── app.py                      # Streamlit frontend
-├── dvc.yaml                    # DVC pipeline definition
-├── params.yaml                 # Hyperparameters
-├── docker-compose.yml          # API + Redis orchestration
-├── Dockerfile                  # API container
-└── requirements.txt
+│   ├── raw/
+│   └── processed/
+│
+├── docs/
+│   ├── data_drift_report.html
+│   ├── index.html
+│   ├── model_performance_report.html
+│   └── monitoring_summary.json
+│
+├── frontend/
+│   └── app.py
+│
+├── k8s/
+│   ├── deployment.yaml
+│   ├── service.yaml
+│   └── redis-deployment.yaml
+│
+├── models/
+│   ├── best_model_info.json
+│   ├── logistic_regression.pkl
+│   ├── xgboost.pkl
+│   └── lightgbm.pkl
+│
+├── reports/
+│
+├── src/
+│   │
+│   ├── data/
+│   │   ├── ingest.py
+│   │   ├── preprocess.py
+│   │   └── validate.py
+│   │
+│   ├── models/
+│   │   ├── train.py
+│   │   └── evaluate.py
+│   │
+│   ├── monitoring/
+│   │   ├── drift.py
+│   │   └── reports.py
+│   │
+│   └── api/
+│       ├── main.py
+│       ├── schemas.py
+│       ├── cache.py
+│       └── ab_test.py
+│
+├── tests/
+│   ├── test_data.py
+│   ├── test_model.py
+│   └── test_api.py
+│
+├── .coverage
+├── .dockerignore
+├── .dvcignore
+├── .gitignore
+├── Dockerfile
+├── docker-compose.yml
+├── dvc.yaml
+├── params.yaml
+├── pytest.ini
+├── requirements.txt
+└── README.md
 
 ---
 
