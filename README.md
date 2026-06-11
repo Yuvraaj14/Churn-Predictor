@@ -259,6 +259,7 @@ pytest tests/test_api.py -v     # 9 API endpoint tests
 
 ## 📁 Project Structure
 
+```
 churn-predictor/
 │
 ├── .dvc/
@@ -330,6 +331,7 @@ churn-predictor/
 ├── pytest.ini
 ├── requirements.txt
 └── README.md
+```
 
 ---
 
