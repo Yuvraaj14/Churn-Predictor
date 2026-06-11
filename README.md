@@ -47,48 +47,7 @@ Predicts whether a telecom customer will churn using ML models trained on the Te
 
 ## 🏗️ System Architecture
 
-```mermaid
-graph TB
-    subgraph "Training Pipeline"
-        A[Telco Dataset\n7,043 customers] --> B[Feature Engineering\n+6 new features]
-        B --> C[SMOTE Balancing\n26.5% → 50% churn]
-        C --> D[3 Models Trained\nLR · XGBoost · LightGBM]
-        D --> E[MLflow + DagsHub\nExperiment Tracking]
-        D --> F[DVC\nData Versioning]
-    end
-
-    subgraph "Production API"
-        G[FastAPI\nRender.com] --> H{A/B Router\n80/20 split}
-        H -->|80%| I[XGBoost\nChampion]
-        H -->|20%| J[LightGBM\nChallenger]
-        G --> K[Redis Cache\nTTL = 1 hour]
-        G --> L[Auto Rollback\nif AUC drops 5%]
-    end
-
-    subgraph "Monitoring"
-        M[Evidently AI] --> N[Data Drift Report]
-        M --> O[Model Performance]
-        N --> P[GitHub Pages\nLive Dashboard]
-        O --> P
-    end
-
-    subgraph "Frontend"
-        Q[Streamlit UI\nRender.com] --> G
-        Q --> R[Prediction History]
-        Q --> S[Analytics Dashboard]
-    end
-
-    subgraph "CI/CD"
-        T[GitHub Actions] -->|on push| U[25 pytest tests]
-        U -->|pass| V[Docker Build]
-        V --> W[Deploy Reports\nGitHub Pages]
-    end
-
-    style I fill:#ffcc80,stroke:#e65100
-    style G fill:#a5d6a7,stroke:#1b5e20
-    style P fill:#b3e5fc,stroke:#0277bd
-    style Q fill:#ce93d8,stroke:#4a148c
-```
+![Architecture](architecture.jpeg)
 
 ---
 
